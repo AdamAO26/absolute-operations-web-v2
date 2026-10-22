@@ -13,3 +13,5 @@ header .brand img{width:190px;height:auto;max-height:84px;object-fit:contain}foo
 
 /* Home uses the same procedural motor as the Motor Platform explorer. */
 .motor-hero-frame{display:block;width:100%;aspect-ratio:1;border:0;pointer-events:none;background:transparent}
+
+body[data-page="contact"] .contact-options .split{grid-template-columns:1fr;max-width:780px}

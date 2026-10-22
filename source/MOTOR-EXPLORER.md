@@ -29,3 +29,5 @@ Architecture revision: upper and lower Halbach magnet arrays surround the slotle
 Visibility update: the electromagnetic reveal tilts early, opens the axial gaps before the Halbach callouts, and offsets the cover. BN-filled encapsulant surrounds the bottom PCB. Power/CAN connector geometry follows the PCB edge. Callouts use brighter lines, endpoint markers, and ordering based on projected anchor positions.
 
 Axis/scroll correction: all groups remain on the same Y axis with no lateral cover displacement. A shared continuous expansion factor runs from 12% through 100% scroll; mechanical layers have uniform final spacing and all geometry keeps its original scale. Both direct-drive and titanium top-plate notes attach to front-cover anchors.
+
+Phone rendering now enables antialiasing, a 2x pixel-ratio cap, smoother circular geometry, and texture anisotropy. Mobile callouts show a single anchored component description with a picker for every part, inside a layout that reserves separate space for the model, text, and controls.
