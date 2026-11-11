@@ -17,8 +17,8 @@ export const homeCapabilities = `
 export const servicesPage = `
 <section class="page-intro engineering-services-intro">
   <a class="breadcrumb mono" href="/">HOME /</a>
-  <span class="eyebrow">SERVICES / ST. GEORGE, UTAH</span>
-  <h1>Engineering &amp; Prototype Services</h1>
+  <span class="eyebrow">PROTOTYPE DEVELOPMENT / ST. GEORGE, UTAH</span>
+  <h1>Engineering Services</h1>
   <p class="service-lead">Precision engineering supporting advanced motion technology.</p>
   <p>Alongside development of our proprietary slotless axial-flux BLDC platform, we help teams design and prototype advanced electromechanical products, from precision assemblies to motor controls and compact power electronics.</p>
   <div class="actions"><a class="button filled" href="/contact/">Discuss Your Engineering Project <span aria-hidden="true">↗</span></a><a class="text-button" href="/motor-platform/">Explore the Motor Platform <span aria-hidden="true">→</span></a></div>
