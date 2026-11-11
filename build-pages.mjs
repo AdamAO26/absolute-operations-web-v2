@@ -1,8 +1,7 @@
-import {servicesPage,quoteSection} from './source/engineering-services.mjs';
+import {servicesPage} from './source/engineering-services.mjs';
 import {applySearchMetadata,writeSearchFiles} from './search-metadata.mjs';
 import fs from 'node:fs';
 const source=fs.readFileSync('source/sections.html','utf8');
-const quoteIntake=JSON.parse(fs.readFileSync('source/quote-intake.json','utf8'));
 const section=id=>{const start=source.indexOf('<section ',source.indexOf('<main'));const chunks=source.slice(start).split(/(?=<section )/);const match=chunks.find(s=>s.slice(0,s.indexOf('>')).includes(`id="${id}"`));if(!match)throw new Error(`Missing section ${id}`);return match.slice(0,match.indexOf('</section>')+10)};
 const hero=source.match(/<section class="hero">[\s\S]*?<\/section>/)[0];
 const explorerDocument=fs.readFileSync('dist/motor-explorer.html','utf8');
@@ -28,7 +27,7 @@ const pages={
 'industries':{title:'Industries',content:intro('INDUSTRIES','Three markets.<br>One engineering focus.','Premium, application-specific motors and custom power electronics for defense, aerospace, and medical development programs.')+cards(industryData.map(([slug,label,title,copy])=>[label,`industries/${slug}`,copy]))+`<section class="industry-note"><p class="fineprint">Applications represent intended development markets, not qualified products or established customer deployments.</p></section>`},
 'manufacturing':{title:'Manufacturing',content:intro('MANUFACTURING','Build the capability.<br>Validate the process.','Our plan pairs direct-drive motor development with precision manufacturing infrastructure in St. George, Utah.')+section('manufacturing')+section('company')},
 'about':{title:'About Us',content:about},
-'contact':{title:'Contact',content:intro('CONTACT','Let’s define<br>your application.','Discuss a premium motor and power-electronics integration. Share your general requirements: available space, operating point, feedback, interfaces, and environment.')+quoteSection(quoteIntake.endpoint)+`<section class="contact-options section-light"><div class="split"><div><h2>Start with a<br>clear requirement.</h2><p>Create a local application brief with the key requirements for an engineering conversation.</p><button class="button filled" data-brief>Prepare an application brief <span>↗</span></button></div></div></section>`}
+'contact':{title:'Contact',content:intro('CONTACT','Let’s define<br>your application.','Discuss a premium motor and power-electronics integration. Share your general requirements: available space, operating point, feedback, interfaces, and environment.')+`<section class="contact-options section-light"><div class="split"><div><h2>Start with a<br>clear requirement.</h2><p>Create a local application brief with the key requirements for an engineering conversation.</p><button class="button filled" data-brief>Prepare an application brief <span>↗</span></button></div></div></section>`}
 };
 for(const [slug,label,title,copy,tags] of industryData){pages[`industries/${slug}`]={title:`${label} Applications`,industry:label,content:intro(`${label.toUpperCase()} / TARGET APPLICATIONS`,title,copy)+`<section class="industry-detail section-light"><div class="split"><h2>Designed around<br>your requirements.</h2><div><p class="large-copy">${tags.join(' · ')}</p><p>Define the motion profile, axial space, load inertia, torque and speed, duty cycle, feedback requirements, and operating environment. We will use those constraints to explore a premium custom motor, top-of-the-line power-electronics design, and mechanical integration.</p><a class="text-button" href="/custom-integration/">Explore custom integration →</a><a class="text-button" href="/specifications/">Review development specifications →</a></div></div><p class="fineprint">Target applications are illustrative. Qualification, safety, suitability, and performance require application-specific engineering and testing.</p></section>`+cards(industryData.filter(d=>d[0]!==slug).map(([s,l,t,c])=>[l,`industries/${s}`,c]))};}
 function fixLinks(html){const targets={platform:'motor-platform',integration:'custom-integration',specifications:'specifications',applications:'industries',manufacturing:'manufacturing',company:'manufacturing',contact:'contact',engineering:'motor-platform'};return html.replace(/href="#([a-z-]+)"/g,(all,id)=>targets[id]?`href="/${targets[id]}/"`:all).replaceAll('href="style.css"','href="/style.css"').replaceAll('src="app.js"','src="/app.js"').replaceAll('src="assets/','src="/assets/').replaceAll('href="assets/','href="/assets/');}
@@ -39,5 +38,3 @@ console.log(`Generated ${Object.keys(pages).length} pages and a 404 page.`);
 
 
 writeSearchFiles(Object.keys(pages));
-
-

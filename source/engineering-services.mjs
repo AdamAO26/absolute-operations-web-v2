@@ -32,7 +32,7 @@ export const servicesPage = `
   <span class="eyebrow">ENGINEERING SERVICES / ST. GEORGE, UTAH</span>
   <h1>Engineering &amp; Prototype Development Services</h1>
   <p>Get mechanical design, electronics, and prototype support from the team developing the Absolute Operations slotless BLDC motor platform. Start with a focused engineering project or bring us an assembly that needs mechanical and electrical integration.</p>
-  <div class="actions"><a class="button filled" href="/contact/#engineering-quote">Request Engineering Quote <span aria-hidden="true">↗</span></a><a class="text-button" href="/motor-platform/">Explore the Motor Platform <span aria-hidden="true">→</span></a></div>
+  <div class="actions"><a class="button filled" href="/contact/">Discuss Your Engineering Project <span aria-hidden="true">↗</span></a><a class="text-button" href="/motor-platform/">Explore the Motor Platform <span aria-hidden="true">→</span></a></div>
 </section>
 <section class="section-light engineering-services">
   <div class="section-head"><span class="eyebrow">PROJECT SCOPES</span></div>
@@ -48,26 +48,5 @@ export const servicesPage = `
     <div><h2>Fabrication coordinated with partners.</h2><p>When a project calls for machining, PCB fabrication or assembly, or specialist inspection, the quote identifies the partner work and who is responsible for delivery. Our own precision CNC capability is planned.</p></div>
   </div>
   <p>Each quote defines the deliverables, schedule, review points, and partner costs before work begins.</p>
-  <a class="button filled" href="/contact/#engineering-quote">Request Engineering Quote <span aria-hidden="true">↗</span></a>
+  <a class="button filled" href="/contact/">Discuss Your Engineering Project <span aria-hidden="true">↗</span></a>
 </section>`;
-
-export function quoteSection(endpoint=''){
-  if(endpoint && !/^https:\/\/formspree\.io\/f\/[a-zA-Z0-9]+$/.test(endpoint)) throw new Error('Use a verified Formspree form URL: https://formspree.io/f/FORM_ID');
-  return `<section class="section-light engineering-quote" id="engineering-quote">
-    <div class="section-head"><span class="eyebrow">ENGINEERING INQUIRIES</span></div>
-    <h2>Request Engineering Quote</h2>
-    ${endpoint ? `<p>Tell us what you need and when you need it. We’ll use your work email to follow up about scope and deliverables.</p>
-    <form action="${endpoint}" method="POST" class="quote-form" data-quote-form>
-      <div class="form-grid">
-        <label for="quote-name">Name<input id="quote-name" name="name" autocomplete="name" maxlength="120" required></label>
-        <label for="quote-email">Work email<input id="quote-email" name="email" type="email" autocomplete="email" maxlength="254" required></label>
-        <label for="quote-company">Company<input id="quote-company" name="company" autocomplete="organization" maxlength="160"></label>
-        <label for="quote-service">Service<select id="quote-service" name="service" required><option value="">Select a service</option>${services.map(service=>`<option>${service.title}</option>`).join('')}<option>Not sure yet</option></select></label>
-      </div>
-      <label for="quote-message">Project overview<input id="quote-subject" name="_subject" type="hidden" value="Absolute Operations engineering quote request"><textarea id="quote-message" name="message" rows="5" maxlength="3000" required placeholder="What are you building? What deliverables and timing do you need?"></textarea></label>
-      <p class="fineprint">Please share general project details only. This form is processed by Formspree. Leave out proprietary or controlled information.</p>
-      <button class="button filled" type="submit">Send Quote Request <span aria-hidden="true">↗</span></button>
-      <p role="status" aria-live="polite" data-quote-status></p>
-    </form>` : `<p>Online quote requests aren’t available yet. You can prepare an application brief to share with your Absolute Operations contact.</p>`}
-  </section>`;
-}
