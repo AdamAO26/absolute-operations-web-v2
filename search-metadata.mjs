@@ -14,7 +14,7 @@ const descriptions={
 const esc=s=>s.replaceAll('&','&amp;').replaceAll('"','&quot;').replaceAll('<','&lt;');
 export function applySearchMetadata(html,path,pageTitle){
  const canonical=origin+(path?'/'+path+'/':'/');
- const title=path?`${pageTitle} | Absolute Operations, LLC`:'Absolute Operations, LLC | Slotless BLDC Motors';
+ const title=path?`${pageTitle} | Absolute Operations, LLC`:'Absolute Operations | Precision Drive Solutions';
  const description=descriptions[path]||`Absolute Operations develops slotless BLDC motor concepts and custom power electronics for ${pageTitle.toLowerCase()}.`;
  const organization={'@context':'https://schema.org','@type':'Organization',name:'Absolute Operations, LLC',legalName:'Absolute Operations, LLC',url:origin+'/',logo:origin+'/assets/absolute-operations-brand.svg',description:descriptions[''],slogan:'American Ingenuity. Absolute Outcome.',founder:[{'@type':'Person',name:'Adam DiMaio'},{'@type':'Person',name:'Braden Williams'}]};
  html=html.replace(/<title>[\s\S]*?<\/title>/,`<title>${esc(title)}</title>`).replace(/<meta name="description"[^>]*>/,`<meta name="description" content="${esc(description)}">`);
@@ -25,4 +25,3 @@ export function writeSearchFiles(paths){
  fs.writeFileSync('dist/sitemap.xml',`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`);
  fs.writeFileSync('dist/robots.txt',`User-agent: *\nAllow: /\n\nSitemap: ${origin}/sitemap.xml\n`);
 }
-
