@@ -31,6 +31,8 @@ The existing managed Sites checkout remains in `sites/absolute-motion/`, includi
 
 The application brief downloads locally and does not submit an inquiry. Phone layouts were reviewed at 320 × 667 and 390 × 844, including navigation, text wrapping, image proportions, and the motor explorer.
 
+The Engineering Services page is at `/engineering-services/`. To enable quote intake, create a Formspree form with a verified business inbox, put its public `https://formspree.io/f/FORM_ID` URL in `source/quote-intake.json`, and rebuild with `npm run build`. Leave the endpoint empty until the inbox is configured. Before launch, submit one clearly labeled test from the intended site origin and confirm it arrives in the business inbox. The application brief remains a separate download.
+
 ## Scroll-driven 3D motor explorer
 
 The Motor Platform page includes a procedural Three.js / GSAP exploded-view explorer. The same experience is available in `dist/motor-explorer.html` as a single self-contained file: open it directly in a WebGL-enabled browser, with no server, network, or build required.

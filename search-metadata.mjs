@@ -3,6 +3,7 @@ const origin='https://absoluteoperations.com';
 const descriptions={
  '':'Absolute Operations, LLC is developing American-made, ultra-low-profile slotless BLDC motors and custom power electronics for defense, aerospace, and medical applications.',
  'motor-platform':'Explore Absolute Operations’ slotless direct-drive BLDC motor concept, dual Halbach arrays, integrated power electronics, and ultra-low-profile packaging.',
+ 'engineering-services':'Mechanical and electrical design, BLDC controls, thermal packaging, manufacturing drawings, and partner-coordinated prototype development.',
  'custom-integration':'Custom motor engineering around your application: mechanical packaging, windings, power electronics, sensing, controls, and thermal integration.',
  'specifications':'Review preliminary specifications for Absolute Operations’ slotless BLDC motor and integrated power-electronics development platform.',
  'manufacturing':'Absolute Operations is planning precision motor manufacturing in St. George, Utah, with an approximately eight-week custom prototype turnaround target.',
@@ -24,3 +25,4 @@ export function writeSearchFiles(paths){
  fs.writeFileSync('dist/sitemap.xml',`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`);
  fs.writeFileSync('dist/robots.txt',`User-agent: *\nAllow: /\n\nSitemap: ${origin}/sitemap.xml\n`);
 }
+
